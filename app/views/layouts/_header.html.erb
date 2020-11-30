@@ -1,0 +1,30 @@
+<header class="navbar navbar-expand-sm navbar-dark bg-primary nav sticky-top">
+  <div class="container">
+
+  <%= link_to 'Bluemine', root_path, id: 'logo', class: 'navbar-brand' %>
+
+    <button class="navbar-toggler navbar-toggle-right" type="button" data-toggle="collapse" data-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <nav>
+      <div id="menu" class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item"><%= link_to 'ブック一覧', '#', class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to 'ナレッジ一覧', '#', class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to 'タグ一覧', '#', class: 'nav-link' %></li>
+
+          <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-user"></i>
+              テスト太郎
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to 'ログアウト', "#", method: '#', class: 'dropdown-item' %></li>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>

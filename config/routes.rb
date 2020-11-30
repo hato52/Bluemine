@@ -1,3 +1,12 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  # root 'sessions#login_form'
+  root 'static_pages#index'
+
+  # セッション
+  get     '/login'  =>  'sessions#login_form'
+  post    '/login'  =>  'sessions#login'
+  delete  '/logout' =>  'sessions#logout'
+  
+  # インデックスページ
+  get     '/index'   =>  'static_pages#index'
 end

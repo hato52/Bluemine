@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>KnowledgeLibrary</title>
+    <title>Bluemine</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,16 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'layouts/header' %>
+
+    <div class='container'>
+      <% flash.each do |type, msg| %>
+        <div class='alert alert-<%= type %> mt-3'><%= msg %></div>
+      <% end %>
+
+      <%= yield %>
+
+      <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>
