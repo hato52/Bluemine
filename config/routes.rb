@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  # root 'sessions#login_form'
-  root 'static_pages#index'
+  root 'sessions#login_form'
 
   # セッション
   get     '/login'  =>  'sessions#login_form'

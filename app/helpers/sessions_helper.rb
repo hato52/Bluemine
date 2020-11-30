@@ -1,6 +1,6 @@
 module SessionsHelper
   def log_in(user)
-    session[:user_id] = user.user_id
+    session[:user_id] = user.id
   end
 
   def log_out
@@ -16,9 +16,9 @@ module SessionsHelper
     !current_user.nil?
   end
 
-  def is_user_logged
+  def is_user_logged_in
     unless logged_in?
-      flash[:into] = 'ログインしてください'
+      flash[:info] = 'ログインしてください'
       redirect_to login_url
     end
   end
