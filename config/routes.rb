@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   
   # インデックスページ
   get     '/index'   =>  'static_pages#index'
+
+  # ナレッジ
+  resources :knowledges
 end

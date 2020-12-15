@@ -1,4 +1,4 @@
 class KnowledgeTag < ApplicationRecord
-  belongs_to  :knowledge
-  has_one     :tag
+  belongs_to  :knowledge, optional: true
+  belongs_to  :tag
 end

@@ -1,6 +1,6 @@
 class Tag < ApplicationRecord
-  belongs_to  :book_tag
-  belongs_to  :knowledge_tag
+  has_many  :book_tag
+  has_many  :knowledge_tag
 
-  validates   :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: true
 end
