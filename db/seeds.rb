@@ -10,6 +10,7 @@ User.create!(
   login_id: 'admin',
   password: 'password',
   password_confirmation: 'password',
+  name: 'テストユーザ',
   book_id: nil,
   knowledge_id: nil,
   created_at: "2020-11-30 00:00:00", 
