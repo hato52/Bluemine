@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_29_074638) do
+ActiveRecord::Schema.define(version: 2020_12_15_144202) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 2020_11_29_074638) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "book_knowledges", force: :cascade do |t|
+    t.integer "book_id"
+    t.integer "knowledge_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_book_knowledges_on_book_id"
+    t.index ["knowledge_id"], name: "index_book_knowledges_on_knowledge_id"
+  end
+
   create_table "book_tags", force: :cascade do |t|
     t.integer "book_id"
     t.integer "tag_id"
@@ -56,12 +65,12 @@ ActiveRecord::Schema.define(version: 2020_11_29_074638) do
     t.string "title"
     t.text "detail"
     t.integer "user_id"
-    t.integer "knowledge_id"
+    t.integer "book_knowledge_id"
     t.integer "book_tag_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_knowledge_id"], name: "index_books_on_book_knowledge_id"
     t.index ["book_tag_id"], name: "index_books_on_book_tag_id"
-    t.index ["knowledge_id"], name: "index_books_on_knowledge_id"
     t.index ["user_id"], name: "index_books_on_user_id"
   end
 
@@ -78,28 +87,25 @@ ActiveRecord::Schema.define(version: 2020_11_29_074638) do
     t.string "title"
     t.text "content"
     t.integer "user_id"
-    t.integer "book_id"
+    t.integer "book_knowledge_id"
     t.integer "knowledge_tag_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["book_id"], name: "index_knowledges_on_book_id"
+    t.index ["book_knowledge_id"], name: "index_knowledges_on_book_knowledge_id"
     t.index ["knowledge_tag_id"], name: "index_knowledges_on_knowledge_tag_id"
     t.index ["user_id"], name: "index_knowledges_on_user_id"
   end
 
   create_table "tags", force: :cascade do |t|
     t.string "name"
-    t.integer "book_tag_id"
-    t.integer "knowledge_tag_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["book_tag_id"], name: "index_tags_on_book_tag_id"
-    t.index ["knowledge_tag_id"], name: "index_tags_on_knowledge_tag_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "login_id"
     t.string "password_digest"
+    t.string "name"
     t.integer "book_id"
     t.integer "knowledge_id"
     t.datetime "created_at", precision: 6, null: false

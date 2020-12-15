@@ -4,7 +4,7 @@ class CreateKnowledges < ActiveRecord::Migration[6.0]
       t.string      :title
       t.text        :content
       t.references  :user
-      t.references  :book
+      t.references  :book_knowledge
       t.references  :knowledge_tag
       
       t.timestamps
