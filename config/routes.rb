@@ -11,4 +11,7 @@ Rails.application.routes.draw do
 
   # ナレッジ
   resources :knowledges
+
+  # ブック
+  resources :books
 end
