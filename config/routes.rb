@@ -14,4 +14,7 @@ Rails.application.routes.draw do
 
   # ブック
   resources :books
+
+  # タグ
+  resources :tags, only: [:index, :new, :create, :destroy]
 end
