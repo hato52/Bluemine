@@ -1,6 +1,7 @@
 class Tag < ApplicationRecord
-  has_many  :book_tag
-  has_many  :knowledge_tag
+  has_many  :book_tags
+  has_many  :knowledge_tags
+  has_many  :tags, through: :knowledge_tags
 
   validates :name, presence: true, uniqueness: true
 end

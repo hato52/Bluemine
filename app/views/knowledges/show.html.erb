@@ -20,6 +20,18 @@
         <%= f.rich_text_area :content, class: "form-control col-md-6" %>
       </div>
 
+      <div class="form-row">
+        <div class="col-md-6">
+          <%= f.label "タグ" %>
+          <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name, {include_hidden: false}) do |b| %>
+            <div class="form-check">
+              <%= b.check_box(class: "form-check-input") %>
+              <%= b.label(class: "form-check-label"){ b.text } %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
     <% end %>
     </div>
   </div>

@@ -52,6 +52,6 @@ class KnowledgesController < ApplicationController
     end
 
     def knowledge_entry_params
-      params.require(:knowledge).permit(:title, :content, :user_id)
+      params.require(:knowledge).permit(:title, :content, :user_id, tag_ids: [])
     end
 end
