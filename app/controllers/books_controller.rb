@@ -52,6 +52,6 @@ class BooksController < ApplicationController
     end
 
     def book_entry_params
-      params.require(:book).permit(:title, :detail, :user_id)
+      params.require(:book).permit(:title, :detail, :user_id, knowledge_ids: [], tag_ids: [])
     end
 end
