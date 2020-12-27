@@ -12,16 +12,30 @@
   </head>
 
   <body>
+    <!-- header -->
     <%= render 'layouts/header' %>
 
-    <div class='container'>
-      <% flash.each do |type, msg| %>
-        <div class='alert alert-<%= type %> mt-3'><%= msg %></div>
-      <% end %>
+    <div class="d-flex" id="wrapper" v-bind:class='{toggled:isToggled}'>
+      <!-- Sidebar -->
+      <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="list-group list-group-flush">
+          <a href="#" class="list-group-item list-group-item-action bg-light"><i class="fas fa-book"></i> Books</a>
+          <a href="#" class="list-group-item list-group-item-action bg-light"><i class="far fa-lightbulb"></i> Knowledges</a>
+          <a href="#" class="list-group-item list-group-item-action bg-light"><i class="fas fa-tag"></i> Tags</a>
+        </div>
+      </div>
+      
+      <!-- Page Contents -->
+      <div id="page-content-wrapper">
+        <div class='container'>
+          <% flash.each do |type, msg| %>
+            <div class='alert alert-<%= type %> mt-3'><%= msg %></div>
+          <% end %>
 
-      <%= yield %>
+          <%= yield %>
+        </div>
+      </div>
 
-      <%= render 'layouts/footer' %>
     </div>
   </body>
 </html>

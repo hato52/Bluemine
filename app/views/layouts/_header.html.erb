@@ -1,34 +1,38 @@
-<header class="navbar navbar-expand-sm navbar-dark bg-primary nav sticky-top">
-  <div class="container">
+<header class="sticky-top">
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container-fluid">
 
-  <%= link_to 'Bluemine', index_path, id: 'logo', class: 'navbar-brand' %>
+      <%= link_to 'Bluemine', index_path, id: 'logo', class: 'navbar-brand' %>
 
-    <button class="navbar-toggler navbar-toggle-right" type="button" data-toggle="collapse" data-target="#menu">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+      <button class="navbar-toggler navbar-toggle-right" type="button" data-toggle="collapse" data-target="#menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <nav>
       <div id="menu" class="collapse navbar-collapse">
+      <% if logged_in? %>
         <ul class="navbar-nav mr-auto">
-          <% if logged_in? %>
-            <li class="nav-item"><%= link_to 'ブック一覧', books_path, class: 'nav-link' %></li>
-            <li class="nav-item"><%= link_to 'ナレッジ一覧', knowledges_path, class: 'nav-link' %></li>
-            <li class="nav-item"><%= link_to 'タグ一覧', tags_path, class: 'nav-link' %></li>
-
-            <li class="nav-item dropdown active">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-user"></i>
-                <%= current_user.name %>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <%= link_to 'ログアウト', logout_path, method: 'delete', class: 'dropdown-item' %></li>
-              </div>
-            </li>
-          <% else %>
-            <li class="nav-item"><%= link_to 'ログイン', login_path, class: 'nav-link' %></li>
-          <% end %> 
+          <li class="nav-item"><%= link_to 'Books', books_path, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to 'Knowledges', knowledges_path, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to 'Tags', tags_path, class: 'nav-link' %></li>
         </ul>
+
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-user"></i>
+              <%= current_user.name %>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to 'ログアウト', logout_path, method: 'delete', class: 'dropdown-item' %></li>
+            </div>
+          </li>
+        </ul>
+      <% else %>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><%= link_to 'ログイン', login_path, class: 'nav-link' %></li>
+        </ul>
+      <% end %> 
       </div>
-    </nav>
-  </div>
+    </div>
+  </nav>
 </header>
