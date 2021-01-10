@@ -1,16 +1,21 @@
-<h1 class="text-center my-4">ログイン</h1>
+<div class="container col-6">
+  <div class="card mt-5">
+    <div class="card-header">
+      <h1 class="h3 text-center ">ログイン</h1>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <%= form_for(:session, url: login_path) do |f| %>
+            <%= f.text_field :login_id, class: "form-control mt-3", placeholder: "ユーザＩＤ" %>
+            <%= f.password_field :password, class: "form-control mt-3", placeholder: "パスワード" %>
 
-<div class="row">
-  <div class="col-md-6 offset-md-3">
-    <%= form_for(:session, url: login_path) do |f| %>
-
-      <%= f.label "ユーザＩＤ", class: "mt-2" %>
-      <%= f.text_field :login_id, class: "form-control" %>
-
-      <%= f.label "パスワード", class: "mt-2" %>
-      <%= f.password_field :password, class: "form-control" %>
-
-      <div class="text-center"><%= f.submit "ログイン", class: "btn btn-primary mt-3" %></div>
-    <% end %>
+            <div class="text-center"><%= f.submit "ログイン", class: "btn btn-lg btn-primary btn-block mt-5" %></div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <%= render 'layouts/footer' %>
 </div>

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'sessions#login_form'
+  root 'static_pages#index'
 
   # セッション
   get     '/login'  =>  'sessions#login_form'
@@ -14,6 +14,9 @@ Rails.application.routes.draw do
 
   # ブック
   resources :books
+
+  # ブックナレッジ
+  resources :book_knowledges, only: [:show]
 
   # タグ
   resources :tags, only: [:index, :new, :create, :destroy]

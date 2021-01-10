@@ -1,50 +1,41 @@
 <div class="container">
-  <h1 class="text-left my-5">ブック詳細</h1>
+
+  <% breadcrumb :show_book, @book %>
+
+  <!-- ヘッダ部 -->
+  <h6 class="mt-4">
+    <i class="fas fa-user"></i> <%= @book.user.name %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <small class="text-muted">最終更新 : <%= @book.updated_at %></small>
+  </h6>
+  <h1 class="my-3"><%= @book.title %></h1>
+  <p><%= @book.detail %></p>
+
+  <% @tags.each do |tag| %>
+  <span class="badge badge-pill badge-info"><%= tag.name %></span>&nbsp;
+  <% end %>
+  <hr>
   
-  <div class="card">
-    <div class="card-body">
-    <%= form_for(@book) do |f| %>
-
-      <div class="form-group">
-        <%= f.label "記入者" %>
-        <%= f.collection_select :user_id, User.all, :id, :name, {selected: current_user}, {class: 'form-control col-md-6', readonly: true} %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label "タイトル" %>
-        <%= f.text_field :title, class: 'form-control col-md-6' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label "詳細" %>
-        <%= f.text_field :detail, class: "form-control col-md-6" %>
-      </div>
-
-      <div class="form-row">
-        <div class="col-md-6">
-          <%= f.label "ナレッジ" %>
-          <%= f.collection_check_boxes(:knowledge_ids, Knowledge.all, :id, :title, {include_hidden: false}) do |b| %>
-            <div class="form-check">
-              <%= b.check_box(class: "form-check-input") %>
-              <%= b.label(class: "form-check-label"){ b.text } %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="col-md-6">
-          <%= f.label "タグ" %>
-          <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name, {include_hidden: false}) do |b| %>
-            <div class="form-check">
-              <%= b.check_box(class: "form-check-input") %>
-              <%= b.label(class: "form-check-label"){ b.text } %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-
+  <!-- ナレッジ一覧 -->
+  <h3 class="ml-3 mb-3">目次</h3>
+  <ul class="list-group">
+    <% cnt = 0 %>
+    <% @knowledges.each do |knowledge| %>
+    <li class="list-group-item">
+      <!-- タイトル -->
+      <strong><%= link_to knowledge.title, book_knowledge_path(@book) %></strong>
+      <small class="text-muted float-right">最終更新 : <%= knowledge.updated_at %></small>
+      <br>
+      <!-- タグ -->
+      <% @knowledge_tags[cnt].each do |tag| %>
+      <span class="badge badge-pill badge-info"><%= tag.name %></span>&nbsp;
+      <% end %>
+      <br>
+    </li>
+    <% cnt += 1 %>
     <% end %>
-    </div>
-  </div>
+  </ul>
+  <br>
+  
+  <%= paginate @knowledges %>
+  
 </div>

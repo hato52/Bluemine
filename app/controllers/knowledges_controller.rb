@@ -2,11 +2,13 @@ class KnowledgesController < ApplicationController
   before_action :is_user_logged_in
 
   def index
-    @knowledges = Knowledge.all.page(params[:page])
+    @knowledges = Knowledge.all.page(params[:page]).per(5)
+    @tags = get_tag(@knowledges)
   end
 
   def show
     @knowledge = Knowledge.find(params[:id])
+    @tags = Tag.find(@knowledge.tag_ids)
   end
 
   def new

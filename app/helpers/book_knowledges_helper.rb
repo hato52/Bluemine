@@ -1,0 +1,2 @@
+module BookKnowledgesHelper
+end

@@ -1,0 +1,37 @@
+<div class="container">
+
+  <% breadcrumb :show_book_knowledge, @book %>
+
+  <!-- ヘッダ部 -->
+  <h6 class="mt-4">
+    <i class="fas fa-user"></i> <%= @book.user.name %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <small class="text-muted">最終更新 : <%= @book.updated_at %></small>
+  </h6>
+  <h1 class="my-3"><%= @book.title %></h1>
+  <hr>
+
+  <!-- ナレッジ -->
+  <div class="container col-11">
+    <% @knowledges.each do |knowledge| %>
+    <h2 class="my-3"><%= knowledge.title %></h2>
+    <%= knowledge.content %>
+    <% end %>
+  </div>
+  <hr>
+
+  <!-- ページリンク -->
+  <div class="card col-3 float-left mt-5">
+    <div class="card-body text-center">
+      <%= link_to_prev_page @knowledges, '前のページへ' do %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="card col-3 float-right mt-5">
+    <div class="card-body text-center">
+      <%= link_to_next_page @knowledges, '次のページへ' do %>
+      <% end %>
+    </div>
+  </div>
+
+</div>

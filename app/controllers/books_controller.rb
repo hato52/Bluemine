@@ -2,11 +2,17 @@ class BooksController < ApplicationController
   before_action :is_user_logged_in
 
   def index
-    @books = Book.all.page(params[:page]).per(3)
+    @books = Book.all.page(params[:page]).per(5)
+    @tags = get_tag(@books)
   end
 
   def show
     @book = Book.find(params[:id])
+    @tags = Tag.find(@book.tag_ids)
+
+    @knowledges = Knowledge.find(@book.knowledge_ids)
+    @knowledges = Kaminari.paginate_array(@knowledges).page(params[:page]).per(5)
+    @knowledge_tags = get_tag(@knowledges)
   end
 
   def new

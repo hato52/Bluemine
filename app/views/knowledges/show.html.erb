@@ -1,38 +1,19 @@
 <div class="container">
-  <h1 class="text-left my-5">ナレッジ詳細</h1>
+
+  <% breadcrumb :show_knowledge, @knowledge %>
+
+  <!-- ヘッダ部 -->
+  <h6 class="mt-4">
+    <i class="fas fa-user"></i> <%= @knowledge.user.name %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <small class="text-muted">最終更新 : <%= @knowledge.updated_at %></small>
+  </h6>
+  <h1 class="my-3"><%= @knowledge.title %></h1>
+  <% @tags.each do |tag| %>
+  <span class="badge badge-pill badge-info"><%= tag.name %></span>&nbsp;
+  <% end %>
+  <hr>
   
-  <div class="card">
-    <div class="card-body">
-    <%= form_for(@knowledge) do |f| %>
-
-      <div class="form-group">
-        <%= f.label "記入者" %>
-        <%= f.collection_select :user_id, User.all, :id, :name, {selected: current_user}, {class: 'form-control col-md-6', readonly: true} %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label "タイトル" %>
-        <%= f.text_field :title, class: 'form-control col-md-6' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label "コンテンツ" %>
-        <%= f.rich_text_area :content, class: "form-control col-md-6" %>
-      </div>
-
-      <div class="form-row">
-        <div class="col-md-6">
-          <%= f.label "タグ" %>
-          <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name, {include_hidden: false}) do |b| %>
-            <div class="form-check">
-              <%= b.check_box(class: "form-check-input") %>
-              <%= b.label(class: "form-check-label"){ b.text } %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-
-    <% end %>
-    </div>
-  </div>
+  <!-- コンテンツ部 -->
+  <div class="mb-5"><%= @knowledge.content %></div>
+  
 </div>

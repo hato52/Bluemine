@@ -14,20 +14,19 @@
  *= require_self
  */
 
- $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
- @import '@fortawesome/fontawesome-free/scss/fontawesome';
- @import '@fortawesome/fontawesome-free/scss/regular';
- @import '@fortawesome/fontawesome-free/scss/solid';
- @import '@fortawesome/fontawesome-free/scss/brands';
+$fa-font-path: '@fortawesome/fontawesome-free/webfonts';
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
+@import '@fortawesome/fontawesome-free/scss/regular';
+@import '@fortawesome/fontawesome-free/scss/solid';
+@import '@fortawesome/fontawesome-free/scss/brands';
 
- @import 'bootstrap/scss/bootstrap';
+@import 'bootstrap/scss/bootstrap';
 
 
 /* サイドバー用 */
-
- #wrapper {
-    overflow-x: hidden;
- }
+#wrapper {
+  overflow-x: hidden;
+}
 
 #sidebar-wrapper {
   min-height: 100vh;
@@ -68,4 +67,9 @@
   #wrapper.toggled #sidebar-wrapper {
     margin-left: -15rem;
   }
+}
+
+// ページネーション
+.pagination {
+  justify-content: center;
 }

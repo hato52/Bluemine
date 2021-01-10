@@ -1,55 +1,33 @@
 <div class="container">
-  <h1 class="text-left my-5">ブック編集</h1>
-  
-  <div class="card">
-    <div class="card-header">
-      登録内容
-    </div>
-    <div class="card-body">
-    <%= form_for(@book) do |f| %>
 
-      <div class="form-group">
-        <%= f.label "記入者" %>
-        <%= f.collection_select :user_id, User.all, :id, :name, {selected: current_user}, {class: 'form-control col-md-6', readonly: true} %>
-      </div>
+  <% breadcrumb :edit_book, @book %>
 
-      <div class="form-group">
-        <%= f.label "タイトル" %>
-        <%= f.text_field :title, class: 'form-control col-md-6' %>
-      </div>
+  <%= form_for(@book) do |f| %>
+  <!-- ユーザID -->
+  <%= f.hidden_field :user_id, value: current_user.id %>
 
-      <div class="form-group">
-        <%= f.label "詳細" %>
-        <%= f.text_field :detail, class: "form-control col-md-6" %>
-      </div>
-
-      <div class="form-row">
-        <div class="col-md-6">
-          <%= f.label "ナレッジ" %>
-          <%= f.collection_check_boxes(:knowledge_ids, Knowledge.all, :id, :title, {include_hidden: false}) do |b| %>
-            <div class="form-check">
-              <%= b.check_box(class: "form-check-input") %>
-              <%= b.label(class: "form-check-label"){ b.text } %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="col-md-6">
-          <%= f.label "タグ" %>
-          <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name, {include_hidden: false}) do |b| %>
-            <div class="form-check">
-              <%= b.check_box(class: "form-check-input") %>
-              <%= b.label(class: "form-check-label"){ b.text } %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-      <hr>
-  
-      <div class="text-center"><%= f.submit "登録", class: 'btn btn-primary w-25' %></div>
-    <% end %>
-    </div>
+  <!-- タイトル -->
+  <div class="form-group mt-4">
+    <%= f.text_field :title, class: "form-control", placeholder: "タイトル" %>
   </div>
+
+  <!-- 詳細 -->
+  <div class="form-group mt-2">
+    <%= f.text_field :detail, class: "form-control", placeholder: "ブックの説明" %>
+  </div>
+
+  <!-- タグ -->
+  <div class="form-group mt-3">
+    <%= f.label "タグ" %>
+    <%= f.collection_select :tag_ids, Tag.all, :id, :name, {include_hidden: false}, {class: "form-control js-select", multiple: true} %>
+  </div>
+
+  <!-- ナレッジ -->
+  <div class="form-group mt-3">
+    <%= f.label "ブックに追加するナレッジ" %>
+    <%= f.collection_select :knowledge_ids, Knowledge.all, :id, :title, {include_hidden: false}, {class: "form-control js-select", multiple: true} %>
+  </div>
+
+  <div class="text-center my-3"><%= f.submit "ブックを更新", class: 'btn btn-primary w-25' %></div>
+  <% end %>
 </div>

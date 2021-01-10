@@ -1,8 +1,10 @@
 <header class="sticky-top">
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-sm navbar-light bg-light">
     <div class="container-fluid">
 
-      <%= link_to 'Bluemine', index_path, id: 'logo', class: 'navbar-brand' %>
+      <%= link_to index_path, id: 'logo', class: 'navbar-brand' do %>
+        <%= image_tag 'logo.png', size: "145x45" %>
+      <% end %>
 
       <button class="navbar-toggler navbar-toggle-right" type="button" data-toggle="collapse" data-target="#menu">
         <span class="navbar-toggler-icon"></span>
@@ -11,9 +13,8 @@
       <div id="menu" class="collapse navbar-collapse">
       <% if logged_in? %>
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item"><%= link_to 'Books', books_path, class: 'nav-link' %></li>
-          <li class="nav-item"><%= link_to 'Knowledges', knowledges_path, class: 'nav-link' %></li>
-          <li class="nav-item"><%= link_to 'Tags', tags_path, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to 'ブック', books_path, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to 'ナレッジ', knowledges_path, class: 'nav-link' %></li>
         </ul>
 
         <ul class="navbar-nav">
