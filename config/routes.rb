@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # ルート
   root 'static_pages#index'
 
   # セッション
@@ -6,12 +7,13 @@ Rails.application.routes.draw do
   post    '/login'  =>  'sessions#login'
   delete  '/logout' =>  'sessions#logout'
   
-  # インデックスページ
+  # ホーム
   get     '/index'   =>  'static_pages#index'
 
   # ナレッジ
   resources :knowledges
 
+  # TODO ブックナレッジをブックのネストに配置する
   # ブック
   resources :books
 
@@ -19,5 +21,10 @@ Rails.application.routes.draw do
   resources :book_knowledges, only: [:show]
 
   # タグ
-  resources :tags, only: [:index, :new, :create, :destroy]
+  resources :tags, only: [:index, :create, :destroy] do
+    member do
+      get :show_books
+      get :show_knowledges
+    end
+  end
 end

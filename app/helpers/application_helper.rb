@@ -1,4 +1,5 @@
 module ApplicationHelper
+
   # ブック/ナレッジが所持しているタグを取得
   def get_tag(objs)
     tags = []

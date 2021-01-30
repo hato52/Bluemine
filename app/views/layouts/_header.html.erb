@@ -1,5 +1,5 @@
 <header class="sticky-top">
-  <nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <nav class="navbar navbar-expand-sm navbar-light" style="background-color: #e3f2fd;">
     <div class="container-fluid">
 
       <%= link_to index_path, id: 'logo', class: 'navbar-brand' do %>
@@ -13,9 +13,30 @@
       <div id="menu" class="collapse navbar-collapse">
       <% if logged_in? %>
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item"><%= link_to 'ブック', books_path, class: 'nav-link' %></li>
-          <li class="nav-item"><%= link_to 'ナレッジ', knowledges_path, class: 'nav-link' %></li>
+          <li class="nav-item">
+            <%= link_to books_path, class: 'nav-link' do %>
+              <i class="fas fa-book"></i> ブック
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to knowledges_path, class: 'nav-link' do %>
+              <i class="far fa-lightbulb"></i> ナレッジ
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to tags_path, class: 'nav-link' do %>
+              <i class="fas fa-tags"></i> タグ
+            <% end %>
+          </li>
         </ul>
+
+        <!-- 検索バー -->
+        <div class="form-inline my-2 mr-5">
+          <input type="text" class="form-control mr-2" placeholder="キーワードで検索" aria-describedby="button-addon2">
+          <button class="btn btn-outline-primary" type="button" id="button-addon2">
+            <i class="fas fa-search"></i>検索
+          </button>
+        </div>
 
         <ul class="navbar-nav">
           <li class="nav-item dropdown active">

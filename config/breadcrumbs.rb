@@ -50,3 +50,12 @@ crumb :show_book_knowledge do |book|
   link "ナレッジ", book_knowledge_path(book)
   parent :show_book, book
 end
+
+crumb :tags do
+  link "タグ一覧", tags_path
+end
+
+crumb :show_tag do |tag|
+  link "#" + tag.name, tag_path(tag)
+  parent :tags
+end

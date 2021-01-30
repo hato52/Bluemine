@@ -1,46 +1,28 @@
 <div class="container">
-  <h1 class="text-left my-5">タグ管理</h1>
 
-  <div class="card">
-    <div class="card-header">
-      登録内容
-    </div>
-    <div class="card-body">
-    <%= form_tag(tags_path, method: :post) do %>
-      <div class="form-group col-md-6">
-        <%= label_tag "名称" %>
-        <%= text_field_tag :name,'', class: "form-control" %>
-      </div>
+  <% breadcrumb :tags %>
 
-      <div class="text-right">
-        <%= submit_tag "登録", class: "btn btn-success" %>
-      </div>
+  <div class="form-inline my-5">
+    <%= form_tag(tags_path, method: :post, class: "mx-auto") do %>
+        <%= text_field_tag :name,'', class: "form-control mr-2", placeholder: "新規タグ名を入力" %>
+        <%= submit_tag 'タグを登録', class: "btn btn-success" %>
     <% end %>
-    </div>
   </div>
 
-  <br><br><br>
-
-  <%= paginate @tags %>
-
-  <table class="table  table-striped">
-    <thead>
-      <tr>
-        <th scope="col">名称</th>
-      </tr>
-    </thead>
-    <tbody>
+  <div class="d-flex flex-row flex-wrap">
     <% @tags.each do |tag| %>
-      <tr>
-        <td class="align-middle" scope="row"><%= tag.name %></td>
-        <td class="align-middle" scope="row">
-          <%= link_to "削除", tag_path(tag), method: :delete, data: {confirm: "#{tag.name}を削除しますか？"}, class: "btn btn-danger float-right my-auto" %>
-        </td>
-      </tr>
-    <% end %>  
-    </tbody>
-  </table>
+      <div class="col-3">
+        <div class="card my-3">
+          <div class="card-body">
+            <%= link_to "#" + tag.name, show_books_tag_path(tag) %>
+            <%= link_to tag_path(tag), method: :delete, data: {confirm: "#{tag.name}を削除しますか？"}, class: "btn btn-sm btn-outline-danger float-right" do %>
+              <i class="fas fa-times"></i>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 
   <%= paginate @tags %>
-
 </div>
