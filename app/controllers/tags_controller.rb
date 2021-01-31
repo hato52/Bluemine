@@ -36,6 +36,11 @@ class TagsController < ApplicationController
     @knowledges = Kaminari.paginate_array(@knowledges).page(params[:page]).per(5)
   end
 
+  def search
+    @tags = Tag.search(params[:q])
+    render json: @tags
+  end
+
   private
     def tag_params
       params.permit(:name)

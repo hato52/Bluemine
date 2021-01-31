@@ -14,7 +14,7 @@
   <!-- タグ -->
   <div class="form-group mt-3">
     <%= f.label "タグ" %>
-    <%= f.collection_select :tag_ids, Tag.all, :id, :name, {include_hidden: false}, {class: "form-control js-select", multiple: true} %>
+    <%= f.collection_select :tag_ids, Tag.all, :id, :name, {include_hidden: false}, {class: "form-control tag-select", multiple: true} %>
   </div>
  
   <!-- コンテンツ -->

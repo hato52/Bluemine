@@ -7,4 +7,6 @@ class Knowledge < ApplicationRecord
   has_rich_text :content
 
   validates     :title, presence: true
+
+  scope :search, -> { where('title LIKE ?', '%#{query}%').limit(20) }
 end

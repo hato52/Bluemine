@@ -36,7 +36,33 @@ require("select2/dist/css/select2")     // select2 本体のCSSの読み込み
 require("select2-bootstrap4-theme/dist/select2-bootstrap4")     // select2のBootstrapモデルのCSSを読み込み
 
 $(document).on("turbolinks:load", () => {
-    $('.js-select').select2({
-        // ajax: true               // Ajax使うと検索結果が見つからないと言われる
+    $('.tag-select').select2({
+        alax: {
+            url: "/tags/search",
+            dataType: "json",
+            delay: 200,
+            data: (params) => {
+                return { q: params.term };
+            },
+            processResults: (data) => {
+                return { results: data.items };
+            }
+        },
+        theme: "bootstrap4"
+    });
+
+    $('.knowledge-select').select2({
+        alax: {
+            url: "/knowledges/search",
+            dataType: "json",
+            delay: 200,
+            data: (params) => {
+                return { q: params.term };
+            },
+            processResults: (data) => {
+                return { results: data.items };
+            }
+        },
+        theme: "bootstrap4"
     });
 });

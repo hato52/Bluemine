@@ -19,13 +19,13 @@
   <!-- タグ -->
   <div class="form-group mt-3">
     <%= f.label "タグ" %>
-    <%= f.collection_select :tag_ids, Tag.all, :id, :name, {include_hidden: false}, {class: "form-control js-select", multiple: true} %>
+    <%= f.collection_select :tag_ids, Tag.all, :id, :name, {include_hidden: false}, {class: "form-control tag-select", multiple: true} %>
   </div>
 
   <!-- ナレッジ -->
   <div class="form-group mt-3">
     <%= f.label "ブックに追加するナレッジ" %>
-    <%= f.collection_select :knowledge_ids, Knowledge.all, :id, :title, {include_hidden: false}, {class: "form-control js-select", multiple: true} %>
+    <%= f.collection_select :knowledge_ids, Knowledge.all, :id, :title, {include_hidden: false}, {class: "form-control knowledge-select", multiple: true} %>
   </div>
 
   <div class="text-center my-3"><%= f.submit "ブックを追加", class: 'btn btn-primary w-25' %></div>

@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   get     '/index'   =>  'static_pages#index'
 
   # ナレッジ
-  resources :knowledges
+  resources :knowledges do
+    collection do
+      get :search
+    end
+  end
 
   # TODO ブックナレッジをブックのネストに配置する
   # ブック
@@ -25,6 +29,10 @@ Rails.application.routes.draw do
     member do
       get :show_books
       get :show_knowledges
+    end
+
+    collection do
+      get :search
     end
   end
 end

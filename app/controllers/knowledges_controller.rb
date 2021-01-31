@@ -49,6 +49,11 @@ class KnowledgesController < ApplicationController
     redirect_to knowledges_url
   end
 
+  def search
+    @knowledges = Knowledge.search(params[:q])
+    render json: @knowledges
+  end
+
   private
     def knowledge_search_params
     end
