@@ -14,7 +14,7 @@
     <li class="list-group-item">
       <!-- タイトル -->
       <strong><%= link_to knowledge.title, knowledge_path(knowledge) %></strong>
-      <small class="text-muted float-right">最終更新 : <%= knowledge.updated_at %></small>
+      <small class="text-muted float-right">最終更新 : <%= knowledge.updated_at.strftime("%Y-%m-%d %H:%M") %></small>
       <br>
       <!-- タグ -->
       <% @tags[cnt].each do |tag| %>

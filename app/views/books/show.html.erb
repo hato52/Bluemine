@@ -5,7 +5,7 @@
   <!-- ヘッダ部 -->
   <h6 class="mt-4">
     <i class="fas fa-user"></i> <%= @book.user.name %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <small class="text-muted">最終更新 : <%= @book.updated_at %></small>
+    <small class="text-muted">最終更新 : <%= @book.updated_at.strftime("%Y-%m-%d %H:%M") %></small>
   </h6>
   <h1 class="my-3"><%= @book.title %></h1>
   <p><%= @book.detail %></p>
@@ -23,7 +23,7 @@
     <li class="list-group-item">
       <!-- タイトル -->
       <strong><%= link_to knowledge.title, book_book_knowledge_path(@book, knowledge.id) %></strong>
-      <small class="text-muted float-right">最終更新 : <%= knowledge.updated_at %></small>
+      <small class="text-muted float-right">最終更新 : <%= knowledge.updated_at.strftime("%Y-%m-%d %H:%M") %></small>
       <br>
       <!-- タグ -->
       <% @knowledge_tags[cnt].each do |tag| %>
