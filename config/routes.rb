@@ -17,12 +17,10 @@ Rails.application.routes.draw do
     end
   end
 
-  # TODO ブックナレッジをブックのネストに配置する
   # ブック
-  resources :books
-
-  # ブックナレッジ
-  resources :book_knowledges, only: [:show]
+  resources :books do
+    resources :book_knowledges, only: [:show]
+  end
 
   # タグ
   resources :tags, only: [:index, :create, :destroy] do

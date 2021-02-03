@@ -11,8 +11,8 @@ class BooksController < ApplicationController
     @tags = Tag.find(@book.tag_ids)
 
     @knowledges = Knowledge.find(@book.knowledge_ids)
-    @knowledges = Kaminari.paginate_array(@knowledges).page(params[:page]).per(5)
     @knowledge_tags = get_tag(@knowledges)
+    @knowledges = Kaminari.paginate_array(@knowledges).page(params[:page]).per(5)
   end
 
   def new

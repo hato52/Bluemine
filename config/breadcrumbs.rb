@@ -46,8 +46,8 @@ crumb :edit_knowledge do |knowledge|
   parent :knowledges
 end
 
-crumb :show_book_knowledge do |book|
-  link "ナレッジ", book_knowledge_path(book)
+crumb :show_book_knowledge do |book, knowledge|
+  link knowledge.title, book_book_knowledge_path(knowledge)
   parent :show_book, book
 end
 
