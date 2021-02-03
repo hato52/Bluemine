@@ -2,59 +2,53 @@
 
   <% breadcrumb :root %>
 
-  <div class="input-group mt-5 col-6 mx-auto">
-    <input type="text" class="form-control" placeholder="Please Enter Keywords..." aria-describedby="button-addon2">
-    <div class="input-group-append">
-      <button class="btn btn-outline-primary" type="button" id="button-addon2">
-        <i class="fas fa-search"></i>
-      </button>
-    </div>
-  </div>
-
   <div class="card-deck mt-5">
     <div class="card">
       <div class="card-header">
-        <i class="fas fa-book"></i>&nbsp;&nbsp;Books
+        <i class="fas fa-book"></i>&nbsp;&nbsp;最近のブック
       </div>
       <div class="card-body">
         <ul class="list-group">
-          <li class="list-group-item">Cras justo odio</li>
-          <li class="list-group-item">Dapibus ac facilisis in</li>
-          <li class="list-group-item">Morbi leo risus</li>
-          <li class="list-group-item">Porta ac consectetur ac</li>
-          <li class="list-group-item">Vestibulum at eros</li>
+          <% @books.each do |book| %>
+          <li class="list-group-item">
+            <%= link_to book.title, book_path(book) %>
+            <small class="text-muted float-right">
+              <i class="fas fa-history"></i>&nbsp;&nbsp;<%= book.updated_at.strftime("%Y-%m-%d") %>
+            </small>
+          </li>
+          <% end %>
         </ul>
       </div>
     </div>
 
     <div class="card">
       <div class="card-header">
-        <i class="far fa-lightbulb"></i>&nbsp;&nbsp;Knowledges
+        <i class="far fa-lightbulb"></i>&nbsp;&nbsp;最近のナレッジ
       </div>
       <div class="card-body">
         <ul class="list-group">
-          <li class="list-group-item">Cras justo odio</li>
-          <li class="list-group-item">Dapibus ac facilisis in</li>
-          <li class="list-group-item">Morbi leo risus</li>
-          <li class="list-group-item">Porta ac consectetur ac</li>
-          <li class="list-group-item">Vestibulum at eros</li>
+          <% @knowledges.each do |knowledge| %>
+          <li class="list-group-item">
+            <%= link_to knowledge.title, knowledge_path(knowledge) %>
+            <small class="text-muted float-right">
+              <i class="fas fa-history"></i>&nbsp;&nbsp;<%= knowledge.updated_at.strftime("%Y-%m-%d") %>
+            </small>
+          </li>
+          <% end %>
         </ul>
       </div>
     </div>
   </div>
 
+  <!-- TODO 最近のアクティビティを作成する
   <div class="card my-5">
     <div class="card-header">
       <i class="fas fa-history"></i>&nbsp;&nbsp;最近の更新
     </div>
     <div class="card-body">
       <ul class="list-group">
-        <li class="list-group-item">Cras justo odio</li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item">Morbi leo risus</li>
-        <li class="list-group-item">Porta ac consectetur ac</li>
-        <li class="list-group-item">Vestibulum at eros</li>
       </ul>
     </div>
   </div>
+  -->
 </div>
