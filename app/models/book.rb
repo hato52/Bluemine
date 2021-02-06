@@ -6,4 +6,6 @@ class Book < ApplicationRecord
   has_many    :tags, through: :book_tags
 
   validates :title, presence: true
+
+  scope :search, -> (word) { where('title LIKE ?', '%' + word + '%') }
 end

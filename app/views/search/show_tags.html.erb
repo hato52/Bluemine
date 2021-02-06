@@ -1,0 +1,23 @@
+<div class="container">
+
+  <% breadcrumb :search_tags %>
+
+  <h1 class="my-3">タグ検索結果：<%= @search_word %></h1>
+  <hr>
+
+  <ul class="list-group">
+    <% cnt = 0 %>
+    <% @tags.each do |tag| %>
+    <li class="list-group-item">
+      <!-- タイトル -->
+      <strong><%= link_to "#" + tag.name, show_books_tag_path(tag) %></strong>
+      <br>
+    </li>
+    <% cnt += 1 %>
+    <% end %>
+  </ul>
+  <br>
+
+  <p class="text-center mt-3 mb-5"><%= page_entries_info @tags %></p>
+  <%= paginate @tags %>
+</div>

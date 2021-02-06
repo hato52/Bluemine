@@ -8,7 +8,13 @@ Rails.application.routes.draw do
   delete  '/logout' =>  'sessions#logout'
   
   # ホーム
-  get     '/index'   =>  'static_pages#index'
+  get     '/index'  =>  'static_pages#index'
+
+  # 検索
+  get     '/search'                 => 'search#index'
+  get     '/search/show_books'      => 'search#show_books'
+  get     '/search/show_knowledges' => 'search#show_knowledges'
+  get     '/search/show_tags'       => 'search#show_tags'
 
   # ナレッジ
   resources :knowledges do

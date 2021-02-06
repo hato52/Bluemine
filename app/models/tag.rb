@@ -6,5 +6,5 @@ class Tag < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
-  scope :search, -> { where('name LIKE ?', '%#{query}%').limit(20) }
+  scope :search, -> (word) { where('name LIKE ?', '%' + word + '%') }
 end

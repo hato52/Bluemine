@@ -4,8 +4,8 @@
 
   <div class="form-inline my-5">
     <%= form_tag(tags_path, method: :post, class: "mx-auto") do %>
-        <%= text_field_tag :name,'', class: "form-control mr-2", placeholder: "新規タグ名を入力" %>
-        <%= submit_tag 'タグを登録', class: "btn btn-success" %>
+      <%= text_field_tag :name,'', class: "form-control mr-2", placeholder: "新規タグ名を入力" %>
+      <%= submit_tag 'タグを登録', class: "btn btn-success" %>
     <% end %>
   </div>
 
@@ -14,7 +14,7 @@
       <div class="col-3">
         <div class="card my-3">
           <div class="card-body">
-            <%= link_to "#" + tag.name, show_books_tag_path(tag) %>
+            <strong><%= link_to "#" + tag.name, show_books_tag_path(tag) %></strong>
             <%= link_to tag_path(tag), method: :delete, data: {confirm: "#{tag.name}を削除しますか？"}, class: "btn btn-sm btn-outline-danger float-right" do %>
               <i class="fas fa-times"></i>
             <% end %>

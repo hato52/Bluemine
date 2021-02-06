@@ -8,6 +8,22 @@ crumb :root do
   link "Home", root_path
 end
 
+crumb :search do
+  link "検索結果", search_path
+end
+
+crumb :search_books do
+  link "ブック検索結果", search_path
+end
+
+crumb :search_knowledges do
+  link "ナレッジ検索結果", search_path
+end
+
+crumb :search_tags do
+  link "タグ検索結果", search_path
+end
+
 crumb :books do
   link "ブック一覧", books_path
 end

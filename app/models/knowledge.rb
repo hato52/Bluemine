@@ -8,5 +8,5 @@ class Knowledge < ApplicationRecord
 
   validates     :title, presence: true
 
-  scope :search, -> { where('title LIKE ?', '%#{query}%').limit(20) }
+  scope :search, -> (word) { where('title LIKE ?', '%' + word + '%') }
 end

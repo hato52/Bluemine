@@ -1,0 +1,29 @@
+<div class="container">
+
+  <% breadcrumb :search_knowledges %>
+
+  <h1 class="my-3">ナレッジ検索結果：<%= @search_word %></h1>
+  <hr>
+
+  <ul class="list-group">
+    <% cnt = 0 %>
+    <% @knowledges.each do |knowledge| %>
+    <li class="list-group-item">
+      <!-- タイトル -->
+      <strong><%= link_to knowledge.title, knowledge_path(knowledge) %></strong>
+      <small class="text-muted float-right">最終更新 : <%= knowledge.updated_at.strftime("%Y-%m-%d %H:%M") %></small>
+      <br>
+      <!-- タグ -->
+      <% @knowledge_tags[cnt].each do |tag| %>
+      <span class="badge badge-pill badge-info"><%= tag.name %></span>&nbsp;
+      <% end %>
+      <br>
+    </li>
+    <% cnt += 1 %>
+    <% end %>
+  </ul>
+  <br>
+
+  <p class="text-center mt-3 mb-5"><%= page_entries_info @knowledges %></p>
+  <%= paginate @knowledges %>
+</div>
