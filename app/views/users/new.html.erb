@@ -17,16 +17,16 @@
           <div class="col-md-8 offset-md-2">
             <%= form_for(@user) do |f| %>
               <%= f.label "ユーザＩＤ" %>
-              <small class="text-muted">&nbsp;&nbsp;※ログインの際に必要なユーザＩＤ</small>
+              <small class="text-muted">&nbsp;&nbsp;ログインの際に必要なユーザＩＤ</small>
               <%= f.text_field :login_id, class: "form-control", placeholder: "ユーザＩＤ" %>
 
-              <%= f.label "パスワード", class: "mt-3" %>
-              <small class="text-muted">&nbsp;&nbsp;※ログインの際に必要なパスワード</small>
+              <%= f.label "パスワード", class: "mt-4" %>
+              <small class="text-muted">&nbsp;&nbsp;ログインの際に必要なパスワード</small>
               <%= f.password_field :password, class: "form-control", placeholder: "パスワード" %>
               <%= f.password_field :password_confirm, class: "form-control mt-2", placeholder: "もう一度入力してください" %>
 
-              <%= f.label "ユーザ名", class: "mt-5" %>
-              <small class="text-muted">&nbsp;&nbsp;※システム内で使用される名前</small>
+              <%= f.label "ユーザ名", class: "mt-4" %>
+              <small class="text-muted">&nbsp;&nbsp;システム内で使用される名前</small>
               <%= f.text_field :name, class: "form-control", placeholder: "ユーザ名" %>
 
               <div class="text-center"><%= f.submit "ユーザ登録", class: "btn btn-lg btn-primary btn-block mt-5" %></div>
