@@ -39,4 +39,7 @@ Rails.application.routes.draw do
       get :search
     end
   end
+
+  # ユーザ
+  resources :users
 end

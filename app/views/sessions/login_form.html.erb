@@ -1,4 +1,9 @@
 <div class="container col-6">
+
+  <div class="text-center mt-5">
+    <%= image_tag 'logo_full.png', size: "202x68" %>
+  </div>
+
   <div class="card mt-5">
     <div class="card-header">
       <h1 class="h3 text-center ">ログイン</h1>
@@ -15,6 +20,10 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="text-center mt-4">
+    <%= link_to "ユーザ新規登録はこちら", new_user_path %>
   </div>
 
   <%= render 'layouts/footer' %>

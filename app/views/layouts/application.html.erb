@@ -13,8 +13,10 @@
 
   <body>
     <!-- ヘッダ -->
+    <% if logged_in? %>
     <%= render 'layouts/header' %>
-
+    <% end %>
+    
     <div class='container'>
       <!-- パンくずリスト -->
       <div class="mt-3"><%= breadcrumbs %></div>
