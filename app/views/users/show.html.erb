@@ -1,0 +1,38 @@
+<div class="container">
+
+  <% breadcrumb :user %>
+
+  <h1 class="mt-3">ユーザ設定</h1>
+  <hr>
+
+  <div class="container">
+
+    <div class="float-right">
+      <%= link_to edit_user_path, class: "btn btn-success mt-3 mb-4" do %>
+        <i class="fas fa-pen"></i> プロフィール修正
+      <% end %>
+    </div>
+
+    <h2 class="mt-4">プロフィール</h2>
+
+    <%= form_with model: @user, local: true do |f| %>
+      <!-- ユーザID -->
+      <div class="form-group mt-4 col-6">
+        <%= f.label "ユーザＩＤ" %>
+        <%= f.text_field :user_id, value: @user.login_id, class: "form-control", readonly: true %>
+      </div>
+
+      <!-- ユーザ名 -->
+      <div class="form-group my-4 col-6">
+        <%= f.label "ユーザ名" %>
+        <%= f.text_field :name, value: @user.name, class: "form-control", readonly: true %>
+      </div>
+
+      <!-- パスワード -->
+      <div class="form-group my-4 col-6">
+        <%= f.label "パスワード" %>
+        <%= f.password_field :password, class: "form-control", placeholder: "セキュリティのため非表示", readonly: true %>
+      </div>
+    <% end %>
+  </div>
+</div>

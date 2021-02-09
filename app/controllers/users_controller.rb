@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_action :is_user_logged_in, except: [:new, :create]
 
-  def index
+  def show
+    @user = current_user
   end
 
   def new
@@ -15,8 +16,24 @@ class UsersController < ApplicationController
       flash[:success] = "ユーザの登録が完了しました"
       redirect_to login_path
     else
-      flash.now[:danger] = "ユーザの登録に失敗しました"
-      render action: :new
+      flash[:danger] = "ユーザの登録に失敗しました"
+      redirect_to new_user_path
+    end
+  end
+
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+
+    if @user.update(user_entry_params)
+      flash[:success] = "プロフィールを更新しました"
+      redirect_to user_path
+    else
+      flash[:danger] = "入力内容に不備があります"
+      render action: :edit
     end
   end
 

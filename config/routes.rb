@@ -41,5 +41,5 @@ Rails.application.routes.draw do
   end
 
   # ユーザ
-  resources :users
+  resource :user
 end

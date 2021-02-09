@@ -46,8 +46,20 @@
               <i class="fas fa-user"></i>
               <%= current_user.name %>
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%= link_to 'ログアウト', logout_path, method: 'delete', class: 'dropdown-item' %></li>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <%= link_to "#", method: 'get', class: 'dropdown-item mb-1' do %>
+                <i class="far fa-newspaper"></i>&nbsp;&nbsp;&nbsp;自分の投稿
+              <% end %>
+              <%= link_to "#", method: 'get', class: 'dropdown-item disabled mb-1' do %>
+                <i class="far fa-star"></i>&nbsp;&nbsp;&nbsp;お気に入り
+              <% end %>
+              <%= link_to user_path, method: 'get', class: 'dropdown-item mb-1' do %>
+                <i class="fas fa-cog"></i>&nbsp;&nbsp;&nbsp;ユーザ設定
+              <% end %>
+              <div class="dropdown-divider"></div>
+              <%= link_to logout_path, method: 'delete', class: 'dropdown-item' do %>
+                <i class="fas fa-power-off"></i>&nbsp;&nbsp;&nbsp;ログアウト
+              <% end %>
             </div>
           </li>
         </ul>

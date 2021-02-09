@@ -15,7 +15,7 @@
       <div class="card-body">
         <div class="row">
           <div class="col-md-8 offset-md-2">
-            <%= form_for(@user) do |f| %>
+            <%= form_with model: @user, url: user_path, method: :post, local: true do |f| %>
               <%= f.label "ユーザＩＤ" %>
               <small class="text-muted">&nbsp;&nbsp;ログインの際に必要なユーザＩＤ</small>
               <%= f.text_field :login_id, class: "form-control", placeholder: "ユーザＩＤ" %>

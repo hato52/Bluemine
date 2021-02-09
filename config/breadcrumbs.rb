@@ -8,6 +8,15 @@ crumb :root do
   link "Home", root_path
 end
 
+crumb :user do
+  link "ユーザ設定", user_path
+end
+
+crumb :edit_user do
+  link "プロフィール修正", edit_user_path
+  parent :user
+end
+
 crumb :search do
   link "検索結果", search_path
 end
