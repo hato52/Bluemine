@@ -1,9 +1,9 @@
 <div class="container">
 
-  <% breadcrumb :show_tag, @tag %>
+  <% breadcrumb :posts %>
 
   <!-- ヘッダ部 -->
-  <h1 class="my-3">#<%= @tag.name %></h1>
+  <h1 class="my-3">自分の投稿</h1>
   <hr>
 
   <ul class="nav nav-tabs justify-content-center">
@@ -11,7 +11,7 @@
       <%= link_to "ブック", "#", class: "nav-link active" %>
     </li>
     <li class="nav-item">
-      <%= link_to "ナレッジ", show_knowledges_tag_path(@tag.id), class: "nav-link" %>
+      <%= link_to "ナレッジ", show_knowledges_posts_path, class: "nav-link" %>
     </li>
   </ul>
 
@@ -22,7 +22,9 @@
     <li class="list-group-item">
       <!-- タイトル -->
       <strong><%= link_to book.title, book_path(book) %></strong>
-      <small class="text-muted float-right">最終更新 : <%= book.updated_at.strftime("%Y-%m-%d %H:%M") %></small>
+      <%= link_to  "削除", book_path(book), method: :delete, class: "btn btn-danger float-right", data: {confirm: "#{book.title}を削除しますか？"} %>
+      <%= link_to  "修正", edit_book_path(book), class: "btn btn-success float-right mr-4" %>
+      <small class="text-muted float-right mr-4">最終更新 : <%= book.updated_at.strftime("%Y-%m-%d %H:%M") %></small>
       <br>
       <!-- タグ -->
       <% @book_tags[cnt].each do |tag| %>

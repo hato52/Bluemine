@@ -17,6 +17,10 @@ crumb :edit_user do
   parent :user
 end
 
+crumb :posts do
+  link "自分の投稿", posts_path
+end
+
 crumb :search do
   link "検索結果", search_path
 end
@@ -43,12 +47,12 @@ crumb :show_book do |book|
 end
 
 crumb :new_book do
-  link "新規作成", new_book_path
+  link "ブック新規作成", new_book_path
   parent :books
 end
 
 crumb :edit_book do |book|
-  link "編集", edit_book_path
+  link "ブック編集", edit_book_path
   parent :books
 end
 
@@ -62,12 +66,12 @@ crumb :show_knowledge do |knowledge|
 end
 
 crumb :new_knowledge do
-  link "新規作成", new_knowledge_path
+  link "ナレッジ新規作成", new_knowledge_path
   parent :knowledges
 end
 
 crumb :edit_knowledge do |knowledge|
-  link "編集", edit_knowledge_path
+  link "ナレッジ編集", edit_knowledge_path
   parent :knowledges
 end
 

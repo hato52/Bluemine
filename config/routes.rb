@@ -42,4 +42,12 @@ Rails.application.routes.draw do
 
   # ユーザ
   resource :user
+
+  # 自分の投稿
+  resources :posts, only: [:index] do
+    collection do
+      get :show_books
+      get :show_knowledges
+    end
+  end
 end
